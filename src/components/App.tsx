@@ -1,5 +1,5 @@
 import './App.scss';
-import React, { lazy } from 'react';
+import { lazy } from 'react';
 import Layout from './Layout/Layout';
 import { Route, Routes } from 'react-router-dom';
 

@@ -1,21 +1,22 @@
-import React, { Suspense } from 'react';
-import AppBar from '../AppBar/AppBar';
+import AppBar from '@/components/AppBar/AppBar';
+import { Suspense } from 'react';
+import s from './Layout.module.scss';
 
-export interface layoutProps {
+export interface LayoutProps {
   children: React.ReactNode;
 }
 
-const layout: React.FC<layoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <header>
+      <header className={s.header}>
         <AppBar />
       </header>
-      <main>
+      <main className={s.main}>
         <Suspense fallback={null}>{children}</Suspense>
       </main>
     </>
   );
 };
 
-export default layout;
+export default Layout;

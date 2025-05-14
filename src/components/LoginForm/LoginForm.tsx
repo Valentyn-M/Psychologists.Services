@@ -1,9 +1,9 @@
 import { ErrorMessage, Field, Form, Formik, type FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import s from './LoginForm.module.scss';
 import { svgIcon } from '../App';
-import Button from '../Button/Button';
+import Button from '@/components/Button/Button';
 
 export interface LoginFormProps {}
 

@@ -1,4 +1,4 @@
-// @import './styles/reset.scss';
+@use '@/styles/reset';
 
 .visually-hidden {
   position: absolute;
@@ -11,4 +11,26 @@
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+:root {
+  --main: #191a15;
+  --main-light: #fbfbfb;
+  --brand-color: #54be96;
+  --brand-color-hover: #36a379;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: rem(16);
+  line-height: 1.25;
+  color: var(--main);
+  background-color: var(--main-light);
+  overflow-wrap: break-word;
+  min-width: rem(320);
+}
+
+.brand-color {
+  color: var(--brand-color);
 }

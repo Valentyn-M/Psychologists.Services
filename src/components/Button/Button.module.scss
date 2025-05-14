@@ -1,0 +1,48 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border-radius: 30px;
+  padding: rem(14) rem(40);
+  background: var(--brand-color);
+  font-weight: 500;
+  font-size: rem(16);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--main-light);
+  transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background: var(--brand-color-hover);
+    }
+  }
+  &:focus {
+    background: var(--brand-color-hover);
+  }
+
+  &.outline {
+    border: rem(1) solid rgba(25, 26, 21, 0.2);
+    background-color: transparent;
+    color: var(--main);
+
+    @media (any-hover: hover) {
+      &:hover {
+        background: var(--brand-color-hover);
+        border-color: transparent;
+        color: var(--main-light);
+      }
+    }
+    &:focus {
+      border-color: transparent;
+      color: var(--main-light);
+      background: var(--brand-color-hover);
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
+  }
+}

@@ -1,15 +1,14 @@
-import React from 'react';
-import AuthNav from '../AuthNav/AuthNav';
-import UserMenu from '../UserMenu/UserMenu';
+import AuthPanel from '@/components/AuthPanel/AuthPanel';
+import UserPanel from '@/components/UserPanel/UserPanel';
 
 export interface AuthBarProps {}
 
 const AuthBar: React.FC<AuthBarProps> = ({}) => {
   return (
     <div>
-      {/* TODO {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
-      <AuthNav />
-      <UserMenu />
+      {/* TODO {isLoggedIn ? <UserMenu /> : <AuthPanel />} */}
+      <AuthPanel />
+      {/* <UserPanel /> */}
     </div>
   );
 };

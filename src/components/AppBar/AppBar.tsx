@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './AppBar.module.scss';
 import clsx from 'clsx';
 

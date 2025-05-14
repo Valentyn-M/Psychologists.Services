@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import Button from '../Button/Button';
-import MainReactModal from '../ReactModal/MainReactModal';
-import LoginForm from '../LoginForm/LoginForm';
-import RegistrationForm from '../RegistrationForm/RegistrationForm';
+import Button from '@/components/Button/Button';
+import LoginForm from '@/components/LoginForm/LoginForm';
+import MainReactModal from '@/components/ReactModal/MainReactModal';
+import RegistrationForm from '@/components/RegistrationForm/RegistrationForm';
+import { useState } from 'react';
+import s from './AuthPanel.module.scss';
 
-export interface AuthNavProps {}
+export interface AuthPanelProps {}
 
-const AuthNav: React.FC<AuthNavProps> = ({}) => {
+const AuthPanel: React.FC<AuthPanelProps> = ({}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState<'login' | 'register' | null>(null);
 
@@ -21,7 +22,7 @@ const AuthNav: React.FC<AuthNavProps> = ({}) => {
   };
 
   return (
-    <>
+    <div className={s.AuthPanel}>
       <Button outline onClick={() => openModal('login')}>
         Log In
       </Button>
@@ -34,8 +35,8 @@ const AuthNav: React.FC<AuthNavProps> = ({}) => {
         {modalType === 'login' && <LoginForm />}
         {modalType === 'register' && <RegistrationForm />}
       </MainReactModal>
-    </>
+    </div>
   );
 };
 
-export default AuthNav;
+export default AuthPanel;
