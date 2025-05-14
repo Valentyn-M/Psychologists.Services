@@ -5,6 +5,9 @@ import App from './components/App';
 import { BrowserRouter } from 'react-router-dom';
 import { HeadProvider } from 'react-head';
 // import { Provider } from 'react-redux';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
