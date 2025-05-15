@@ -1,0 +1,27 @@
+.hero {
+  padding-top: rem(126);
+  padding-bottom: rem(140);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: calc(125 / 1184 * 100%);
+  row-gap: rem(40);
+
+  @media (max-width: rem(980)) {
+    column-gap: calc(125 / 768 * 100%);
+    padding-top: rem(80);
+    padding-bottom: rem(80);
+  }
+
+  @media (max-width: rem(768)) {
+    padding-top: rem(60);
+    padding-bottom: rem(60);
+    column-gap: calc(125 / 740 * 100%);
+  }
+
+  @media (max-width: rem(740)) {
+    flex-direction: column-reverse;
+    padding-top: rem(40);
+    padding-bottom: rem(40);
+  }
+}

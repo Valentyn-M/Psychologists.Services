@@ -1,0 +1,122 @@
+.imgBlock {
+  position: relative;
+  width: rem(464);
+  flex-shrink: 0;
+
+  @media (max-width: rem(980)) {
+    width: rem(300);
+  }
+
+  @media (max-width: rem(740)) {
+    width: 100%;
+  }
+}
+
+.priceBlock {
+  border-radius: 20px;
+  padding: rem(32);
+  background-color: var(--brand-color);
+  color: var(--main-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(16);
+  position: absolute;
+  bottom: calc(74 / 526 * 100%);
+  left: rem(-101);
+
+  @media (max-width: rem(740)) {
+    left: rem(-12);
+  }
+
+  @media (max-width: rem(480)) {
+    padding: rem(24);
+  }
+
+  @media (max-width: rem(380)) {
+    padding: rem(18);
+  }
+}
+
+.iconCheckWrap {
+  border-radius: rem(13);
+  width: rem(54);
+  height: rem(54);
+  background-color: var(--main-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .iconCheck {
+    fill: var(--brand-color);
+    width: rem(20);
+    height: rem(15);
+  }
+}
+
+.textBlock {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: rem(8);
+  color: var(--main-light);
+
+  .text {
+    font-size: rem(14);
+    color: rgba(251, 251, 251, 0.5);
+  }
+
+  .price {
+    font-weight: 700;
+    font-size: rem(24);
+  }
+}
+
+.iconQuestionWrap {
+  border-radius: rem(10);
+  width: rem(40);
+  height: rem(40);
+  background: #4535af;
+  transform: rotate(-15deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: calc(185 / 526 * 100%);
+  left: rem(-35);
+
+  @media (max-width: rem(768)) {
+    left: rem(-10);
+  }
+
+  .iconQuestion {
+    width: rem(10);
+    height: rem(17);
+    fill: var(--main-light);
+    transform: rotate(15deg);
+  }
+}
+
+.iconUsersWrap {
+  border-radius: rem(10);
+  width: rem(48);
+  height: rem(48);
+  background: #fbc75e;
+  transform: rotate(15deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: calc(38 / 526 * 100%);
+  right: rem(-38);
+
+  @media (max-width: rem(1330)) {
+    right: rem(-10);
+  }
+
+  .iconUsers {
+    width: rem(20);
+    height: rem(20);
+    fill: var(--main-light);
+  }
+}

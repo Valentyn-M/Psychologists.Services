@@ -18,7 +18,7 @@ const AppBar: React.FC<AppBarProps> = ({}) => {
   };
 
   const isTablet = useMediaQuery('(max-width: 56.25rem)'); // 900px
-  const isMobile = useMediaQuery('(max-width: 40.5rem)'); // 648
+  const isMobile = useMediaQuery('(max-width: 40.5rem)'); // 648px
 
   const btnRef = useRef<HTMLButtonElement>(null);
   const menuWrapRef = useRef<HTMLDivElement>(null!);

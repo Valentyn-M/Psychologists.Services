@@ -17,6 +17,10 @@
     height: calc(100% - rem(73));
   }
 
+  @media (max-width: rem(380)) {
+    width: 100%;
+  }
+
   &.open {
     transform: translate(0%, 0%);
   }

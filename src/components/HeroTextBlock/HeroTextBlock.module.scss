@@ -1,0 +1,86 @@
+.textBlock {
+}
+
+.title {
+  font-weight: 600;
+  font-size: rem(80);
+  line-height: 1.025;
+  letter-spacing: -0.02em;
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+  }
+
+  .depths {
+    font-style: italic;
+  }
+
+  @media (max-width: rem(1040)) {
+    font-size: rem(70);
+  }
+
+  @media (max-width: rem(980)) {
+    font-size: rem(50);
+  }
+
+  @media (max-width: rem(768)) {
+    font-size: rem(40);
+  }
+
+  @media (max-width: rem(740)) {
+    font-size: rem(56);
+  }
+
+  @media (max-width: rem(480)) {
+    font-size: rem(48);
+  }
+
+  @media (max-width: rem(380)) {
+    font-size: rem(36);
+  }
+}
+
+.slogan {
+  font-size: 18px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  &:not(:last-child) {
+    margin-bottom: rem(40);
+  }
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border-radius: 30px;
+  padding: rem(18) rem(50);
+  background: var(--brand-color);
+  font-weight: 500;
+  font-size: rem(20);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--main-light);
+  transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background: var(--brand-color-hover);
+    }
+  }
+  &:focus {
+    background: var(--brand-color-hover);
+  }
+
+  @media (max-width: rem(740)) {
+    display: flex;
+  }
+
+  .iconArrow {
+    width: em(24, 20);
+    height: em(24, 20);
+    fill: var(--main-light);
+    position: relative;
+    top: em(1, 20);
+  }
+}
