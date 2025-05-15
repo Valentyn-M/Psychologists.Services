@@ -5,6 +5,11 @@
   flex-wrap: wrap;
   column-gap: rem(40);
   row-gap: rem(20);
+
+  @media (max-width: rem(900)) {
+    flex-direction: column;
+    row-gap: rem(40);
+  }
 }
 
 .link {
@@ -37,6 +42,16 @@
   &.active {
     &::after {
       transform: translate(-50%, 0) scale(1);
+    }
+  }
+
+  @media (max-width: rem(900)) {
+    font-size: rem(18);
+
+    &::after {
+      width: em(10, 18);
+      height: em(10, 18);
+      bottom: rem(-10);
     }
   }
 }
