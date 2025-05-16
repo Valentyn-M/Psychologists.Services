@@ -4,8 +4,13 @@ import React, { useState } from 'react';
 import s from './RegistrationForm.module.scss';
 import { svgIcon } from '../App';
 import Button from '../Button/Button';
+import { registerUser } from '@/store/auth/operations';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { selectLoading } from '@/store/auth/selectors';
 
-export interface RegistrationFormProps {}
+export interface RegistrationFormProps {
+  onClose?: () => void; // функція, яка закриває модалку
+}
 
 interface FormValues {
   name: string;
@@ -13,7 +18,11 @@ interface FormValues {
   password: string;
 }
 
-const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
+const RegistrationForm: React.FC<RegistrationFormProps> = ({ onClose }) => {
+  const dispatch = useAppDispatch();
+
+  const loading = useAppSelector(selectLoading);
+
   const initialValues: FormValues = {
     name: '',
     email: '',
@@ -34,8 +43,18 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
   });
 
   const handleSubmit = (values: FormValues, actions: FormikHelpers<FormValues>): void => {
-    console.log(values);
-    actions.resetForm();
+    const name = values.name;
+    const email = values.email;
+    const password = values.password;
+    dispatch(registerUser({ displayName: name, email, password }))
+      .unwrap()
+      .then(() => {
+        actions.resetForm();
+        onClose?.(); // Закрити модалку після успіху
+      })
+      .catch(() => {
+        // Обробка помилки (опційно)
+      });
   };
   // FormikHelpers<FormValues> надає методи, типізовані під мої значення (наприклад, resetForm)
 
@@ -95,8 +114,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
                 <ErrorMessage className={s.floatingError} name="password" component="span" />
               </div>
             </label>
-            <Button className={s.btn} type="submit">
-              Sign Up
+            <Button className={s.btn} type="submit" disabled={loading}>
+              {loading ? 'Loading...' : 'Sign Up'}
             </Button>
           </Form>
         )}

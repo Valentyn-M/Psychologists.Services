@@ -32,8 +32,8 @@ const AuthPanel: React.FC<AuthPanelProps> = ({}) => {
         onClose={closeModal}
         contentLabel={modalType === 'login' ? 'Login form' : 'Registration form'}
       >
-        {modalType === 'login' && <LoginForm />}
-        {modalType === 'register' && <RegistrationForm />}
+        {modalType === 'login' && <LoginForm onClose={closeModal} />}
+        {modalType === 'register' && <RegistrationForm onClose={closeModal} />}
       </AnimatedModal>
     </div>
   );

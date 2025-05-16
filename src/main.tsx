@@ -4,19 +4,17 @@ import './index.scss';
 import App from './components/App';
 import { BrowserRouter } from 'react-router-dom';
 import { HeadProvider } from 'react-head';
-// import { Provider } from 'react-redux';
-import Modal from 'react-modal';
-
-Modal.setAppElement('#root');
+import { Provider } from 'react-redux';
+import { store } from '@/store/store';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {/* <Provider store={store}> */}
-    <BrowserRouter>
-      <HeadProvider>
-        <App />
-      </HeadProvider>
-    </BrowserRouter>
-    {/* </Provider> */}
+    <Provider store={store}>
+      <BrowserRouter>
+        <HeadProvider>
+          <App />
+        </HeadProvider>
+      </BrowserRouter>
+    </Provider>
   </StrictMode>
 );
