@@ -1,4 +1,4 @@
-import { registerUser } from '@/store/auth/operations';
+import { loginUser, logoutUser, refreshUser, registerUser } from '@/store/auth/operations';
 import { createSlice, isAnyOf, PayloadAction } from '@reduxjs/toolkit';
 
 export interface User {
@@ -29,12 +29,21 @@ const initialState: AuthState = {
 
 // Тип для відповіді після успішної реєстрації
 interface RegisterResponse {
-  idToken: string; // Токен авторизації
-  email: string; // Email користувача
+  idToken: string;
+  email: string;
   refreshToken: string;
   expiresIn: string;
   localId: string;
-  displayName?: string; // Можливо, буде, якщо імʼя додано через updateProfile
+  displayName: string;
+}
+
+interface LoginResponse {
+  idToken: string;
+  email: string;
+  refreshToken: string;
+  expiresIn: string;
+  localId: string;
+  displayName?: string;
 }
 
 const slice = createSlice({
@@ -43,6 +52,7 @@ const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      // REGISTER
       .addCase(registerUser.fulfilled, (state, action: PayloadAction<RegisterResponse & { displayName: string }>) => {
         state.loading = false;
         state.user.email = action.payload.email;
@@ -51,17 +61,46 @@ const slice = createSlice({
         state.isLoggedIn = true;
         state.error = null;
       })
-
-      .addMatcher(isAnyOf(registerUser.pending), (state) => {
-        state.loading = true;
+      // LOGIN
+      .addCase(loginUser.fulfilled, (state, action: PayloadAction<LoginResponse>) => {
+        state.loading = false;
+        state.user.email = action.payload.email;
+        state.user.name = action.payload.displayName ?? null;
+        state.token = action.payload.idToken;
+        state.isLoggedIn = true;
         state.error = null;
       })
+      // LOGOUT
+      .addCase(logoutUser.fulfilled, () => initialState)
 
-      // rejected має payload типу unknown, тому вказуємо PayloadAction<any>
-      .addMatcher(isAnyOf(registerUser.rejected), (state, action: PayloadAction<string | undefined>) => {
-        state.loading = false;
-        state.error = action.payload ?? 'Unknown error';
-      });
+      // REFRESH
+      .addCase(refreshUser.pending, (state) => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUser.rejected, (state) => {
+        state.isRefreshing = false;
+      })
+
+      .addMatcher(
+        isAnyOf(registerUser.pending, loginUser.pending, logoutUser.pending, refreshUser.pending),
+        (state) => {
+          state.loading = true;
+          state.error = null;
+        }
+      )
+
+      .addMatcher(
+        isAnyOf(registerUser.rejected, loginUser.rejected, logoutUser.rejected, refreshUser.rejected),
+        (state, action) => {
+          state.loading = false;
+          state.error = (action.payload as string) ?? 'Unknown error';
+        }
+      );
   },
 });
 

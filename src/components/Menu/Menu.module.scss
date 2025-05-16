@@ -17,15 +17,6 @@
   position: relative;
   transition: color 0.3s ease 0s;
 
-  @media (any-hover: hover) {
-    &:hover {
-      color: var(--brand-color);
-    }
-  }
-  &:focus {
-    color: var(--brand-color);
-  }
-
   &::after {
     content: '';
     position: absolute;
@@ -36,12 +27,29 @@
     background-color: var(--brand-color);
     width: em(8, 16);
     height: em(8, 16);
-    transition: transform 0.3s ease 0s;
+    transition: transform 0.3s ease 0s, background-color 0.3s ease 0s;
   }
 
   &.active {
     &::after {
       transform: translate(-50%, 0) scale(1);
+    }
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--brand-color-hover);
+
+      &::after {
+        background-color: var(--brand-color-hover);
+      }
+    }
+  }
+  &:focus {
+    color: var(--brand-color-hover);
+
+    &::after {
+      background-color: var(--brand-color-hover);
     }
   }
 

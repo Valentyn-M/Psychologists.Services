@@ -53,7 +53,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onClose }) => {
         onClose?.(); // Закрити модалку після успіху
       })
       .catch(() => {
-        // Обробка помилки (опційно)
+        // TODO Додати тостер
       });
   };
   // FormikHelpers<FormValues> надає методи, типізовані під мої значення (наприклад, resetForm)

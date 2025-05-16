@@ -4,15 +4,24 @@ import React, { useState } from 'react';
 import s from './LoginForm.module.scss';
 import { svgIcon } from '../App';
 import Button from '../Button/Button';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { selectLoading } from '@/store/auth/selectors';
+import { loginUser } from '@/store/auth/operations';
 
-export interface LoginFormProps {}
+export interface LoginFormProps {
+  onClose?: () => void;
+}
 
 interface FormValues {
   email: string;
   password: string;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({}) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onClose }) => {
+  const dispatch = useAppDispatch();
+
+  const loading = useAppSelector(selectLoading);
+
   const initialValues: FormValues = {
     email: '',
     password: '',
@@ -31,8 +40,17 @@ const LoginForm: React.FC<LoginFormProps> = ({}) => {
   });
 
   const handleSubmit = (values: FormValues, actions: FormikHelpers<FormValues>): void => {
-    console.log(values);
-    actions.resetForm();
+    const email = values.email;
+    const password = values.password;
+    dispatch(loginUser({ email, password }))
+      .unwrap()
+      .then(() => {
+        actions.resetForm();
+        onClose?.();
+      })
+      .catch(() => {
+        // TODO Додати тостер
+      });
   };
   // FormikHelpers<FormValues> надає методи, типізовані під мої значення (наприклад, resetForm)
 
@@ -84,8 +102,8 @@ const LoginForm: React.FC<LoginFormProps> = ({}) => {
                 <ErrorMessage className={s.floatingError} name="password" component="span" />
               </div>
             </label>
-            <Button className={s.btn} type="submit">
-              Log In
+            <Button className={s.btn} type="submit" disabled={loading}>
+              {loading ? 'Loading...' : 'Log In'}
             </Button>
           </Form>
         )}

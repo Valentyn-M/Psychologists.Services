@@ -1,7 +1,11 @@
 import './App.scss';
-import { lazy } from 'react';
-import Layout from './Layout/Layout';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import PrivateRoute from '@/components/PrivateRoute';
+import Layout from '@/components/Layout/Layout';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { refreshUser } from '@/store/auth/operations';
+import { selectIsRefreshing } from '@/store/auth/selectors';
 
 export const svgIcon = '/sprite.svg';
 
@@ -11,13 +15,29 @@ const Favorites = lazy(() => import('../pages/Favorites/Favorites'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const App: React.FC = () => {
-  return (
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  const isRefreshing = useAppSelector(selectIsRefreshing);
+
+  return isRefreshing ? (
+    // TODO <Loader />
+    <p>Loading...</p>
+  ) : (
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/psychologists" element={<Psychologists />} />
-        {/* TODO /favorites must be Private route */}
-        <Route path="/favorites" element={<Favorites />} />
+        <Route
+          path="/favorites"
+          element={
+            <PrivateRoute>
+              <Favorites />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>

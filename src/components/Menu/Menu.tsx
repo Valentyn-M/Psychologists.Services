@@ -3,11 +3,15 @@ import { NavLink } from 'react-router-dom';
 import type { NavLinkProps } from 'react-router-dom';
 import s from './Menu.module.scss';
 import clsx from 'clsx';
+import { useAppSelector } from '@/store/hooks';
+import { selectIsLoggedIn } from '@/store/auth/selectors';
 
 export interface MenuProps {}
 
 const Menu: React.FC<MenuProps> = ({}) => {
   const buildLinkClass: NavLinkProps['className'] = ({ isActive }) => clsx(s.link, { [s.active]: isActive });
+
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
   return (
     <nav>
@@ -22,11 +26,13 @@ const Menu: React.FC<MenuProps> = ({}) => {
             Psychologists
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/favorites" className={buildLinkClass}>
-            Favorites
-          </NavLink>
-        </li>
+        {isLoggedIn && (
+          <li>
+            <NavLink to="/favorites" className={buildLinkClass}>
+              Favorites
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );

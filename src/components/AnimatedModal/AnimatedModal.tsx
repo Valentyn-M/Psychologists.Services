@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { createPortal } from 'react-dom';
 import { svgIcon } from '@/components/App';
 import s from './AnimatedModal.module.scss';
+import { useEffect } from 'react';
 
 export interface AnimatedModalProps {
   isOpen: boolean;
@@ -11,6 +12,19 @@ export interface AnimatedModalProps {
 }
 
 const AnimatedModal: React.FC<AnimatedModalProps> = ({ isOpen, onClose, contentLabel, children }) => {
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
   const modalRoot = document.getElementById('modal-root');
   if (!modalRoot) return null;
 

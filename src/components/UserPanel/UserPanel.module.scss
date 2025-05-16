@@ -1,4 +1,42 @@
-.iconUser {
-  width: rem(24);
-  height: rem(24);
+.userPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(28);
+
+  @media (max-width: rem(648)) {
+    flex-direction: column;
+    gap: rem(24);
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(14);
+  transition: color 0.3s ease 0s;
+  max-width: rem(200);
+
+  .iconUserWrap {
+    width: rem(40);
+    height: rem(40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--brand-color);
+    border-radius: rem(10);
+    transition: background-color 0.3s ease 0s;
+    flex-shrink: 0;
+
+    .iconUser {
+      width: rem(24);
+      height: rem(24);
+      fill: var(--main-light);
+    }
+  }
+
+  .userName {
+    word-break: break-all;
+  }
 }
