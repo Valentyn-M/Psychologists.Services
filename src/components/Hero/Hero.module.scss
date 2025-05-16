@@ -6,6 +6,7 @@
   justify-content: space-between;
   column-gap: calc(125 / 1184 * 100%);
   row-gap: rem(40);
+  position: relative;
 
   @media (max-width: rem(980)) {
     column-gap: calc(125 / 768 * 100%);

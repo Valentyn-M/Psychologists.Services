@@ -43,8 +43,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
 
   return (
     <div>
-      <h2>Registration</h2>
-      <p>
+      <h2 className={s.title}>Registration</h2>
+      <p className={s.text}>
         Thank you for your interest in our platform! In order to register, we need some information. Please provide us
         with the following information.
       </p>
@@ -83,11 +83,11 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? (
-                    <svg className={s.conClose}>
+                    <svg className={s.iconEye}>
                       <use href={`${svgIcon}#icon-eye`} />
                     </svg>
                   ) : (
-                    <svg className={s.conClose}>
+                    <svg className={s.iconEye}>
                       <use href={`${svgIcon}#icon-eye-off`} />
                     </svg>
                   )}

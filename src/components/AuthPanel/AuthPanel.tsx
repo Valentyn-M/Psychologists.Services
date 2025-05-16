@@ -1,9 +1,9 @@
 import Button from '@/components/Button/Button';
 import LoginForm from '@/components/LoginForm/LoginForm';
-import MainReactModal from '@/components/ReactModal/MainReactModal';
 import RegistrationForm from '@/components/RegistrationForm/RegistrationForm';
 import { useState } from 'react';
 import s from './AuthPanel.module.scss';
+import AnimatedModal from '@/components/AnimatedModal/AnimatedModal';
 
 export interface AuthPanelProps {}
 
@@ -27,14 +27,14 @@ const AuthPanel: React.FC<AuthPanelProps> = ({}) => {
         Log In
       </Button>
       <Button onClick={() => openModal('register')}>Registration</Button>
-      <MainReactModal
+      <AnimatedModal
         isOpen={isModalOpen}
         onClose={closeModal}
         contentLabel={modalType === 'login' ? 'Login form' : 'Registration form'}
       >
         {modalType === 'login' && <LoginForm />}
         {modalType === 'register' && <RegistrationForm />}
-      </MainReactModal>
+      </AnimatedModal>
     </div>
   );
 };

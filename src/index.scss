@@ -18,10 +18,7 @@
   --main-light: #fbfbfb;
   --brand-color: #54be96;
   --brand-color-hover: #36a379;
-}
-
-html {
-  scrollbar-gutter: stable;
+  --error-color: #f02849;
 }
 
 body {
@@ -37,6 +34,20 @@ body {
   &.lock {
     overflow: hidden;
     touch-action: none;
+  }
+
+  &.home-page {
+    &::after {
+      content: '';
+      position: fixed;
+      right: rem(-166);
+      bottom: rem(-237);
+      width: rem(469);
+      height: rem(469);
+      background-color: var(--brand-color);
+      border-radius: 50%;
+      filter: blur(1000px);
+    }
   }
 }
 

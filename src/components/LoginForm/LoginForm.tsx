@@ -1,9 +1,9 @@
 import { ErrorMessage, Field, Form, Formik, type FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import s from './LoginForm.module.scss';
 import { svgIcon } from '../App';
-import Button from '@/components/Button/Button';
+import Button from '../Button/Button';
 
 export interface LoginFormProps {}
 
@@ -34,15 +34,15 @@ const LoginForm: React.FC<LoginFormProps> = ({}) => {
     console.log(values);
     actions.resetForm();
   };
+  // FormikHelpers<FormValues> надає методи, типізовані під мої значення (наприклад, resetForm)
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
     <div>
-      <h2>Registration</h2>
-      <p>
-        Thank you for your interest in our platform! In order to register, we need some information. Please provide us
-        with the following information.
+      <h2 className={s.title}>Log In</h2>
+      <p className={s.text}>
+        Welcome back! Please enter your credentials to access your account and continue your search for a psychologist.
       </p>
       <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={registerSchema}>
         {({ errors, touched }) => (
@@ -72,11 +72,11 @@ const LoginForm: React.FC<LoginFormProps> = ({}) => {
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? (
-                    <svg className={s.conClose}>
+                    <svg className={s.iconEye}>
                       <use href={`${svgIcon}#icon-eye`} />
                     </svg>
                   ) : (
-                    <svg className={s.conClose}>
+                    <svg className={s.iconEye}>
                       <use href={`${svgIcon}#icon-eye-off`} />
                     </svg>
                   )}
