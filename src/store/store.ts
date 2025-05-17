@@ -1,4 +1,6 @@
 import { authReducer } from '@/store/auth/slice';
+import { filtersReducer } from '@/store/filters/slice';
+import { psychologistsReducer } from '@/store/psychologists/slice';
 import { configureStore } from '@reduxjs/toolkit';
 
 // 1
@@ -19,6 +21,8 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 export const store = configureStore({
   reducer: {
     auth: persistedReducer,
+    psychologists: psychologistsReducer,
+    filters: filtersReducer,
   },
 
   // 4

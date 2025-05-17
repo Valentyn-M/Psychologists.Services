@@ -98,7 +98,7 @@ const slice = createSlice({
         isAnyOf(registerUser.rejected, loginUser.rejected, logoutUser.rejected, refreshUser.rejected),
         (state, action) => {
           state.loading = false;
-          state.error = (action.payload as string) ?? 'Unknown error';
+          state.error = typeof action.payload === 'string' ? action.payload : 'Unknown error';
         }
       );
   },

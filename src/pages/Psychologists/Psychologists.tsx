@@ -1,14 +1,23 @@
-import React from 'react';
+import PsychologistsBlock from '@/components/PsychologistsBlock/PsychologistsBlock';
+import React, { useEffect } from 'react';
 import { Meta, Title } from 'react-head';
 
 export interface PsychologistsProps {}
 
 const Psychologists: React.FC<PsychologistsProps> = ({}) => {
+  useEffect(() => {
+    document.body.classList.add('psychologists-page');
+
+    return () => {
+      document.body.classList.remove('psychologists-page');
+    };
+  }, []);
+
   return (
     <section>
       <Title>Psychologists</Title>
       <Meta name="description" content="Chose your psychologist" />
-      <h1>Psychologists Page</h1>
+      <PsychologistsBlock />
     </section>
   );
 };

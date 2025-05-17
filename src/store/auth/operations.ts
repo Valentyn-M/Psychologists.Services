@@ -6,7 +6,7 @@ import { getIdTokenResult, onAuthStateChanged } from 'firebase/auth';
 
 const API_KEY = firebaseConfig.apiKey;
 
-export const firebaseAPI = axios.create({
+export const firebaseAuthenticationAPI = axios.create({
   baseURL: 'https://identitytoolkit.googleapis.com/v1',
 });
 
@@ -53,7 +53,7 @@ export const registerUser = createAsyncThunk<
      * POST @ /accounts:signUp?key=[API_KEY]
      * body: { email, password, returnSecureToken }
      */
-    const res = await firebaseAPI.post(`/accounts:signUp?key=${API_KEY}`, {
+    const res = await firebaseAuthenticationAPI.post(`/accounts:signUp?key=${API_KEY}`, {
       email,
       password,
       returnSecureToken: true,
@@ -66,7 +66,7 @@ export const registerUser = createAsyncThunk<
      * POST @ /accounts:update?key=[API_KEY]
      * body: { idToken, displayName, returnSecureToken }
      */
-    await firebaseAPI.post(`/accounts:update?key=${API_KEY}`, {
+    await firebaseAuthenticationAPI.post(`/accounts:update?key=${API_KEY}`, {
       idToken: token,
       displayName,
       returnSecureToken: true,
@@ -91,7 +91,7 @@ export const loginUser = createAsyncThunk<LoginResponse, LoginCredentials, { rej
   'auth/loginUser',
   async (credentials, thunkAPI) => {
     try {
-      const response = await firebaseAPI.post(`/accounts:signInWithPassword?key=${API_KEY}`, {
+      const response = await firebaseAuthenticationAPI.post(`/accounts:signInWithPassword?key=${API_KEY}`, {
         ...credentials,
         returnSecureToken: true,
       });
