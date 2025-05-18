@@ -1,54 +1,74 @@
-# React + TypeScript + Vite
+# Psychologists.Services
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![preview](./preview.jpg)
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Psychologists.Services** is a responsive web application for browsing and saving psychologists to favorites.  
+Users can sort specialists by name, price, or rating and manage a personal favorites list (available to authorized users only).  
+The app is built with clean UI/UX, accessibility, and performance in mind.
 
-## Expanding the ESLint configuration
+## 🎨 Figma Design
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+[🔗 View Design on Figma](https://www.figma.com/design/I5vjNb0NsJOpQRnRpMloSY/Psychologists.Services?node-id=0-1&p=f)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## ✨ Features
+
+### Public Access
+
+- View all psychologists
+- Sorting options:
+  - A → Z / Z → A
+  - Price: Low → High / High → Low
+  - Rating: High → Low / Low → High
+
+### Authenticated Users
+
+- Add or remove psychologists from favorites
+- Favorites page with persistent state (localStorage / Firebase-ready)
+- Protected private routes
+- Toast notifications (success / error)
+- Session persistence on reload
+
+### Additional
+
+- Registration + display name
+- Custom modal & animations
+- Mobile-first and fully responsive
+
+## 🛠 Tech Stack
+
+- **React** + **TypeScript**
+- **Redux Toolkit** + **Thunk**
+- **React Router v6**
+- **Formik** + **Yup**
+- **Firebase Auth** + **Realtime Database**
+- **Axios** for HTTP requests
+- **Framer Motion** for animation
+- **MUI** with style overrides
+- **Notistack** for toast messages
+- **SCSS Modules**
+- **Responsive Design**
+
+## 📁 Project Structure
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+├── components/        # Reusable UI components
+├── pages/             # Route-level views (Home, Psychologists, Favorites)
+├── store/             # Redux slices, async thunks, selectors
+├── firebase/          # Firebase configuration
+├── constants/         # Shared constants like PAGE\_SIZE
+├── styles/            # Global and utility SCSS
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## ✅ Status
+
+- ✔️ Fully implemented
+- ✔️ Meets all technical requirements
+- ✔️ Responsive and mobile-friendly
+
+```
+> Created by [Valentyn M.](https://github.com/Valentyn-M)
 ```
