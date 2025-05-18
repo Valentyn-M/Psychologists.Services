@@ -6,7 +6,7 @@
   column-gap: rem(40);
   row-gap: rem(20);
 
-  @media (max-width: rem(900)) {
+  @media (max-width: rem(950)) {
     flex-direction: column;
     row-gap: rem(40);
   }

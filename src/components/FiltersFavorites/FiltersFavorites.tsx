@@ -1,19 +1,19 @@
 import { FormControl, MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import s from './Filters.module.scss';
+import s from './FiltersFavorites.module.scss';
 import SvgArrowIcon from '@/components/SvgArrowIcon/SvgArrowIcon';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { selectValuePsychologists } from '@/store/filters/selectors';
-import { changeFilterPsychologists, FilterOption } from '@/store/filters/slice';
+import { selectValueFavorites } from '@/store/filters/selectors';
+import { changeFilterFavorites, FilterOption } from '@/store/filters/slice';
 
-export interface FiltersProps {}
+export interface FiltersFavoritesProps {}
 
-const Filters = ({}: FiltersProps) => {
-  const filterValue = useAppSelector(selectValuePsychologists);
+const FiltersFavorites = ({}: FiltersFavoritesProps) => {
+  const filterValue = useAppSelector(selectValueFavorites);
 
   const dispatch = useAppDispatch();
 
   const handleChange = (event: SelectChangeEvent): void => {
-    dispatch(changeFilterPsychologists(event.target.value as FilterOption));
+    dispatch(changeFilterFavorites(event.target.value as FilterOption));
   };
 
   return (
@@ -136,4 +136,4 @@ const Filters = ({}: FiltersProps) => {
   );
 };
 
-export default Filters;
+export default FiltersFavorites;

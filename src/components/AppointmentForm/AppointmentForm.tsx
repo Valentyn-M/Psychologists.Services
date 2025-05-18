@@ -3,8 +3,8 @@ import s from './AppointmentForm.module.scss';
 import * as Yup from 'yup';
 import Button from '@/components/Button/Button';
 import { useState } from 'react';
-import clsx from 'clsx';
 import FormikTimePicker from '@/components/FormikTimePicker/FormikTimePicker';
+import { useSnackbar } from 'notistack';
 
 export interface PsychologistInfo {
   avatarUrl: string;
@@ -26,6 +26,8 @@ interface FormValues {
 
 const AppointmentForm = ({ onClose, psychologist }: AppointmentFormProps) => {
   const [loading, setLoading] = useState(false);
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const initialValues: FormValues = {
     name: '',
@@ -54,6 +56,9 @@ const AppointmentForm = ({ onClose, psychologist }: AppointmentFormProps) => {
       actions.resetForm();
       onClose();
       console.log(values);
+      enqueueSnackbar('Appointment request sent successfully!', {
+        variant: 'success',
+      });
     }, 1000);
   };
 

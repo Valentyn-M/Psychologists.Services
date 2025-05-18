@@ -1,4 +1,5 @@
 import { authReducer } from '@/store/auth/slice';
+import { favoritesReducer } from '@/store/favorites/slice';
 import { filtersReducer } from '@/store/filters/slice';
 import { psychologistsReducer } from '@/store/psychologists/slice';
 import { configureStore } from '@reduxjs/toolkit';
@@ -23,6 +24,7 @@ export const store = configureStore({
     auth: persistedReducer,
     psychologists: psychologistsReducer,
     filters: filtersReducer,
+    favorites: favoritesReducer,
   },
 
   // 4

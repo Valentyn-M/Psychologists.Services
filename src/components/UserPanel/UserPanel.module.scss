@@ -4,7 +4,7 @@
   justify-content: center;
   gap: rem(28);
 
-  @media (max-width: rem(648)) {
+  @media (max-width: rem(680)) {
     flex-direction: column;
     gap: rem(24);
   }

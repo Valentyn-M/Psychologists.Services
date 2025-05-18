@@ -11,7 +11,7 @@ export interface MenuMobileProps {
 }
 
 const MenuMobile: React.FC<MenuMobileProps> = ({ isActive, wrapRef, menuRef }) => {
-  const isMobile = useMediaQuery('(max-width: 40.5rem)');
+  const isMobile = useMediaQuery('(max-width: 42.5rem)'); // 680px
 
   return (
     <>

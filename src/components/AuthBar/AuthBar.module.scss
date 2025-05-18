@@ -1,9 +1,9 @@
 .authBar {
-  @media (max-width: rem(900)) {
+  @media (max-width: rem(950)) {
     margin-left: auto;
   }
 
-  @media (max-width: rem(648)) {
+  @media (max-width: rem(680)) {
     margin-left: unset;
     padding-top: rem(40);
     border-top: rem(1) solid rgba(25, 26, 21, 0.1);

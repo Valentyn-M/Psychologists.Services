@@ -12,7 +12,7 @@
   transition: transform 0.3s ease 0s;
   z-index: 2;
 
-  @media (max-width: rem(648)) {
+  @media (max-width: rem(680)) {
     top: rem(73);
     height: calc(100% - rem(73));
   }
@@ -44,7 +44,7 @@
   visibility: hidden;
   transition: all 0.3s ease 0s;
 
-  @media (max-width: rem(648)) {
+  @media (max-width: rem(680)) {
     top: rem(73);
   }
 

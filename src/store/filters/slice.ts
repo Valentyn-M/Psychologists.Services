@@ -11,23 +11,29 @@ export enum FilterOption {
 }
 
 interface FiltersState {
-  value: FilterOption;
+  valuePsychologists: FilterOption;
+  valueFavorites: FilterOption;
 }
 
 const initialState: FiltersState = {
-  value: FilterOption.ShowAll,
+  valuePsychologists: FilterOption.ShowAll,
+  valueFavorites: FilterOption.ShowAll,
 };
 
 const slice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    changeFilter: (state, action: PayloadAction<FilterOption>) => {
-      state.value = action.payload;
+    changeFilterPsychologists: (state, action: PayloadAction<FilterOption>) => {
+      state.valuePsychologists = action.payload;
+    },
+    changeFilterFavorites: (state, action: PayloadAction<FilterOption>) => {
+      state.valueFavorites = action.payload;
     },
   },
 });
 
-export const { changeFilter } = slice.actions;
+export const { changeFilterPsychologists } = slice.actions;
+export const { changeFilterFavorites } = slice.actions;
 
 export const filtersReducer = slice.reducer;

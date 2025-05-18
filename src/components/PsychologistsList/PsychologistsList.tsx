@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import s from './PsychologistsList.module.scss';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchPsychologists } from '@/store/psychologists/operations';
-import { selectSortedAndFilteredPsychologists } from '@/store/psychologists/selectors';
+import { selectSortedPsychologists } from '@/store/psychologists/selectors';
 import PsychologistItem from '@/components/PsychologistItem/PsychologistItem';
 
 export interface PsychologistsListProps {}
@@ -10,7 +10,7 @@ export interface PsychologistsListProps {}
 const PsychologistsList = ({}: PsychologistsListProps) => {
   const dispatch = useAppDispatch();
 
-  const psychologists = useAppSelector(selectSortedAndFilteredPsychologists);
+  const psychologists = useAppSelector(selectSortedPsychologists);
 
   useEffect(() => {
     dispatch(fetchPsychologists());

@@ -7,6 +7,7 @@ import Button from '../Button/Button';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { selectLoading } from '@/store/auth/selectors';
 import { loginUser } from '@/store/auth/operations';
+import { useSnackbar } from 'notistack';
 
 export interface LoginFormProps {
   onClose?: () => void;
@@ -19,6 +20,7 @@ interface FormValues {
 
 const LoginForm: React.FC<LoginFormProps> = ({ onClose }) => {
   const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   const loading = useAppSelector(selectLoading);
 
@@ -48,8 +50,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose }) => {
         actions.resetForm();
         onClose?.();
       })
-      .catch(() => {
-        // TODO Додати тостер
+      .catch((error) => {
+        const errorMessage = typeof error === 'string' ? error : error?.message || 'Something went wrong';
+        enqueueSnackbar(`Error: ${errorMessage}`, { variant: 'error' });
       });
   };
   // FormikHelpers<FormValues> надає методи, типізовані під мої значення (наприклад, resetForm)

@@ -7,6 +7,7 @@ import Button from '../Button/Button';
 import { registerUser } from '@/store/auth/operations';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { selectLoading } from '@/store/auth/selectors';
+import { useSnackbar } from 'notistack';
 
 export interface RegistrationFormProps {
   onClose?: () => void; // функція, яка закриває модалку
@@ -20,6 +21,7 @@ interface FormValues {
 
 const RegistrationForm: React.FC<RegistrationFormProps> = ({ onClose }) => {
   const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   const loading = useAppSelector(selectLoading);
 
@@ -52,8 +54,9 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onClose }) => {
         actions.resetForm();
         onClose?.(); // Закрити модалку після успіху
       })
-      .catch(() => {
-        // TODO Додати тостер
+      .catch((error) => {
+        const errorMessage = typeof error === 'string' ? error : error?.message || 'Something went wrong';
+        enqueueSnackbar(`Error: ${errorMessage}`, { variant: 'error' });
       });
   };
   // FormikHelpers<FormValues> надає методи, типізовані під мої значення (наприклад, resetForm)

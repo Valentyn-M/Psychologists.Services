@@ -50,7 +50,8 @@ body {
     }
   }
 
-  &.psychologists-page {
+  &.psychologists-page,
+  &.favorites-page {
     background-color: #f3f3f3;
   }
 }

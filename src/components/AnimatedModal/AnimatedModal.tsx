@@ -13,14 +13,24 @@ export interface AnimatedModalProps {
 
 const AnimatedModal: React.FC<AnimatedModalProps> = ({ isOpen, onClose, contentLabel, children }) => {
   useEffect(() => {
-    if (!isOpen) return;
+    const body = document.body;
+
+    if (isOpen) {
+      body.classList.add('lock');
+    } else {
+      body.classList.remove('lock');
+    }
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
       }
     };
+
     window.addEventListener('keydown', handleKeyDown);
+
     return () => {
+      body.classList.remove('lock'); // Clean up
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, onClose]);
@@ -66,7 +76,7 @@ const AnimatedModal: React.FC<AnimatedModalProps> = ({ isOpen, onClose, contentL
               </svg>
             </button>
 
-            {children}
+            <div className={s.modalContent}>{children}</div>
           </motion.div>
         </motion.div>
       )}

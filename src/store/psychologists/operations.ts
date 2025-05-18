@@ -1,3 +1,4 @@
+import { PAGE_SIZE } from '@/constants';
 import { Psychologist } from '@/store/psychologists/slice';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -20,7 +21,7 @@ export const fetchPsychologists = createAsyncThunk<
 >('psychologists/fetchPsychologists', async (args, thunkAPI) => {
   const { startKey, limit } = args ?? {};
   const safeStartKey = startKey ?? ''; // гарантуємо дефолт
-  const safeLimit = (limit ?? 3) + (startKey ? 1 : 0); // дефолтна порція — 3
+  const safeLimit = (limit ?? PAGE_SIZE) + (startKey ? 1 : 0); // дефолтна порція — 3
 
   try {
     // Формуємо query-параметри

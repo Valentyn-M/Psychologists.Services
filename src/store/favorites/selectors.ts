@@ -1,15 +1,16 @@
-import { selectValuePsychologists } from '@/store/filters/selectors';
+import { selectValueFavorites } from '@/store/filters/selectors';
 import { Psychologist } from '@/store/psychologists/slice';
 import { RootState } from '@/store/store';
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectItems = (state: RootState) => state.psychologists.items;
-export const selectLoading = (state: RootState) => state.psychologists.loading;
-export const selectHasMore = (state: RootState) => state.psychologists.hasMore;
+export const selectFavoriteIds = (state: RootState) => state.favorites.items;
+export const selectFavoritesPage = (state: RootState) => state.favorites.page;
+export const selectFavoriteEntities = (state: RootState) => state.favorites.entities;
+export const selectFavoritesLoading = (state: RootState) => state.favorites.loading;
 
 // Сортування
-export const selectSortedPsychologists = createSelector(
-  [selectItems, selectValuePsychologists],
+export const selectSortedFavorites = createSelector(
+  [selectFavoriteEntities, selectValueFavorites],
   (items, filterValue): Psychologist[] => {
     if (!items) return [];
 

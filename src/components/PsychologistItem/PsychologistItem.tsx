@@ -2,6 +2,8 @@ import { svgIcon } from '@/components/App';
 import s from './PsychologistItem.module.scss';
 import { useState } from 'react';
 import MoreInfo from '@/components/MoreInfo/MoreInfo';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import ButtonFavorite from '@/components/ButtonFavorite/ButtonFavorite';
 
 export interface Review {
   comment: string;
@@ -30,6 +32,8 @@ export interface PsychologistItemProps {
 const PsychologistItem = ({ data }: PsychologistItemProps) => {
   const [isShown, setIsShown] = useState<boolean>(false);
 
+  const isMobile = useMediaQuery('(max-width: 30rem)'); // 480px
+
   const handleClick = (): void => {
     setIsShown(true);
   };
@@ -37,7 +41,10 @@ const PsychologistItem = ({ data }: PsychologistItemProps) => {
   return (
     <li className={s.psychologistItem}>
       <div className={s.imgBlock}>
-        <img className={s.img} src={data.avatar_url} alt="Avatar" width="96" height="96" />
+        <div className={s.imgWrap}>
+          <img className={s.img} src={data.avatar_url} alt="Avatar" width="96" height="96" />
+        </div>
+        {isMobile && <ButtonFavorite id={data.id} />}
       </div>
 
       <div className={s.mainBlock}>
@@ -59,11 +66,7 @@ const PsychologistItem = ({ data }: PsychologistItemProps) => {
                 Price / 1 hour: <span className={s.priceValue}>{data.price_per_hour}</span>
               </div>
             </div>
-            <button type="button" className={s.btnFavorite}>
-              <svg className={s.iconHeart}>
-                <use href={`${svgIcon}#icon-heart`} />
-              </svg>
-            </button>
+            {!isMobile && <ButtonFavorite id={data.id} />}
           </div>
         </div>
 

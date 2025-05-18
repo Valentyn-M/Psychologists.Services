@@ -55,7 +55,7 @@ const FormikTimePicker = ({ name, sx, className }: FormikTimePickerProps) => {
                 },
 
                 '& .MuiInputBase-input': {
-                  padding: '0.90625rem 1.375rem',
+                  padding: '0.90625rem 0 0.90625rem 1.375rem', // Правий не потрібен
                   color: 'var(--main)',
                   fontFamily: 'Inter',
                   fontSize: '1rem',

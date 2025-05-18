@@ -1,3 +1,4 @@
+import { PAGE_SIZE } from '@/constants';
 import { fetchPsychologists } from '@/store/psychologists/operations';
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -25,12 +26,14 @@ export interface PsychologistsState {
   items: Psychologist[];
   loading: boolean;
   error: string | null;
+  hasMore: boolean;
 }
 
 const initialState: PsychologistsState = {
   items: [],
   loading: false,
   error: null,
+  hasMore: true,
 };
 
 const slice = createSlice({
@@ -42,15 +45,19 @@ const slice = createSlice({
       .addCase(fetchPsychologists.pending, (state) => {
         state.loading = true;
       })
+
       .addCase(fetchPsychologists.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        // Prevent duplication by filtering the array (this happens because of StrictMode: in development mode, strict mode React intentionally runs useEffect twice)
-        const newPsychologists = action.payload.filter(
+        // Порівнюємо з довжиною ОРИГІНАЛЬНОЇ відповіді
+        state.hasMore = action.payload.length === PAGE_SIZE;
+        // Фільтруємо, щоб уникнути дублікатів (бо Firebase повертає lastKey ще раз)
+        const newItems = action.payload.filter(
           (newItem) => !state.items.some((existing) => existing.id === newItem.id)
         );
-        state.items.push(...newPsychologists);
+        state.items.push(...newItems);
       })
+
       .addCase(fetchPsychologists.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload ?? 'Unknown error';
