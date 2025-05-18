@@ -1,6 +1,6 @@
 .hero {
-  padding-top: rem(126);
-  padding-bottom: rem(140);
+  padding-top: rem(78);
+  padding-bottom: rem(100);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,13 +10,13 @@
 
   @media (max-width: rem(980)) {
     column-gap: calc(125 / 768 * 100%);
-    padding-top: rem(80);
-    padding-bottom: rem(80);
+    padding-top: rem(60);
+    padding-bottom: rem(60);
   }
 
   @media (max-width: rem(768)) {
-    padding-top: rem(60);
-    padding-bottom: rem(60);
+    padding-top: rem(50);
+    padding-bottom: rem(50);
     column-gap: calc(125 / 740 * 100%);
   }
 

@@ -1,4 +1,7 @@
+import { svgIcon } from '@/components/App';
 import s from './PsychologistItem.module.scss';
+import { useState } from 'react';
+import MoreInfo from '@/components/MoreInfo/MoreInfo';
 
 export interface Review {
   comment: string;
@@ -25,10 +28,70 @@ export interface PsychologistItemProps {
 }
 
 const PsychologistItem = ({ data }: PsychologistItemProps) => {
+  const [isShown, setIsShown] = useState<boolean>(false);
+
+  const handleClick = (): void => {
+    setIsShown(true);
+  };
+
   return (
-    <li>
-      <p>{data.name}</p>
-      <div>{data.specialization}</div>
+    <li className={s.psychologistItem}>
+      <div className={s.imgBlock}>
+        <img className={s.img} src={data.avatar_url} alt="Avatar" width="96" height="96" />
+      </div>
+
+      <div className={s.mainBlock}>
+        <div className={s.header}>
+          <div className={s.mainInfo}>
+            <div className={s.jobTitle}>Psychologist</div>
+            <div className={s.name}>{data.name}</div>
+          </div>
+          <div className={s.addInfo}>
+            <div className={s.addInfoBlock}>
+              <div className={s.raiting}>
+                <svg className={s.iconStar}>
+                  <use href={`${svgIcon}#icon-star`} />
+                </svg>
+                <div className={s.raitingValue}>Rating: {data.rating}</div>
+              </div>
+              <span className={s.devider}></span>
+              <div className={s.price}>
+                Price / 1 hour: <span className={s.priceValue}>{data.price_per_hour}</span>
+              </div>
+            </div>
+            <button type="button" className={s.btnFavorite}>
+              <svg className={s.iconHeart}>
+                <use href={`${svgIcon}#icon-heart`} />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <ul className={s.tags}>
+          <li className={s.tagItem}>
+            <span className={s.tagName}>Experience:</span> {data.experience}
+          </li>
+          <li className={s.tagItem}>
+            <span className={s.tagName}>License:</span> {data.license}
+          </li>
+          <li className={s.tagItem}>
+            <span className={s.tagName}>Specialization:</span> {data.specialization}
+          </li>
+          <li className={s.tagItem}>
+            <span className={s.tagName}>Initial cconsultation:</span> {data.initial_consultation}
+          </li>
+        </ul>
+
+        <p className={s.about}>{data.about}</p>
+
+        {!isShown && (
+          <button className={s.btnReadMore} type="button" onClick={handleClick}>
+            Read more
+          </button>
+        )}
+
+        {isShown && <MoreInfo reviews={data.reviews} someData={{ avatarUrl: data.avatar_url, name: data.name }} />}
+      </div>
     </li>
   );
 };

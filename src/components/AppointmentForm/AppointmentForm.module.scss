@@ -1,0 +1,160 @@
+.title {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+  }
+
+  @media (max-width: rem(480)) {
+    font-size: 32px;
+  }
+}
+
+.text {
+  color: rgba(25, 26, 21, 0.5);
+  &:not(:last-child) {
+    margin-bottom: rem(40);
+  }
+}
+
+.psychologist {
+  display: flex;
+  align-items: center;
+  gap: rem(14);
+  margin-bottom: rem(40);
+}
+
+.img {
+  border-radius: rem(15);
+}
+
+.yourPsychologist {
+  font-weight: 500;
+  font-size: rem(12);
+  line-height: 1.33333;
+  color: #8a8a89;
+  margin-bottom: rem(4);
+}
+
+.name {
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: (rem(30));
+  width: 100%;
+}
+
+.blockssWrap {
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+}
+
+.label {
+  display: flex;
+  gap: 12px;
+
+  &.phone {
+    width: 100%;
+  }
+}
+
+.fieldWrap {
+  width: 100%;
+  position: relative;
+}
+
+.field {
+  height: rem(52);
+  border: rem(1) solid rgba(25, 26, 21, 0.1);
+  border-radius: rem(12);
+  padding: rem(16) rem(18);
+  width: 100%;
+  transition: border-color 0.3s ease 0s, box-shadow 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: rem(16);
+  line-height: 1.25;
+  color: var(--main);
+  background-color: var(--main-light);
+  outline: none;
+
+  .comment & {
+    min-height: rem(116);
+  }
+
+  &:hover,
+  &:focus {
+    border-color: var(--brand-color);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 rem(1) var(--brand-color);
+  }
+
+  .fieldWrap.error & {
+    border-color: var(--error-color);
+    color: var(--error-color);
+
+    &:focus {
+      box-shadow: 0 0 0 rem(1) var(--error-color);
+    }
+  }
+}
+
+.floatingLabel {
+  position: absolute;
+  top: 50%;
+  left: rem(18);
+  transform: translateY(-50%);
+  padding: 0 rem(5);
+  border-radius: rem(5);
+  background-color: var(--main-light);
+  color: var(--main);
+  transition: top 0.3s ease, transform 0.3s ease, font-size 0.3s ease, color 0.3s ease 0s;
+  pointer-events: none;
+
+  .comment & {
+    top: rem(25);
+  }
+
+  .fieldWrap.error & {
+    color: var(--error-color);
+  }
+}
+
+.field:focus + .floatingLabel {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: rem(12);
+  color: var(--brand-color) !important;
+
+  .fieldWrap.error & {
+    color: var(--error-color) !important;
+  }
+}
+
+.field:not(:placeholder-shown) + .floatingLabel {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: rem(12);
+  color: rgba(25, 26, 21, 0.5);
+
+  .fieldWrap.error & {
+    color: var(--error-color);
+  }
+}
+
+.floatingError {
+  color: var(--error-color);
+  font-size: rem(12);
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+}

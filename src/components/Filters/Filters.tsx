@@ -34,6 +34,7 @@ const Filters = ({}: FiltersProps) => {
             fontWeight: 500,
             fontSize: '1rem', // 16px
             lineHeight: 1.25,
+
             // fieldset
             '& fieldset': {
               border: 'none',
@@ -96,6 +97,7 @@ const Filters = ({}: FiltersProps) => {
                   fontSize: '1rem',
                   lineHeight: '1.25',
                   color: 'rgba(25, 26, 21, 0.3)',
+                  minHeight: 'unset !important',
                   '&.Mui-selected': {
                     backgroundColor: 'transparent',
                     color: 'var(--main)',
@@ -123,8 +125,8 @@ const Filters = ({}: FiltersProps) => {
         >
           <MenuItem value={FilterOption.AtoZ}>A to Z</MenuItem>
           <MenuItem value={FilterOption.ZtoA}>Z to A</MenuItem>
-          <MenuItem value={FilterOption.LessThan10}>Less than 10$</MenuItem>
-          <MenuItem value={FilterOption.GreaterThan10}>Greater than 10$</MenuItem>
+          <MenuItem value={FilterOption.Expensive}>Expensive</MenuItem>
+          <MenuItem value={FilterOption.NotExpensive}>Not expensive</MenuItem>
           <MenuItem value={FilterOption.Popular}>Popular</MenuItem>
           <MenuItem value={FilterOption.NotPopular}>Not popular</MenuItem>
           <MenuItem value={FilterOption.ShowAll}>Show all</MenuItem>

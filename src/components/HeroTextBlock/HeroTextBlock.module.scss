@@ -43,6 +43,7 @@
   font-size: 18px;
   line-height: 1.33333;
   letter-spacing: -0.02em;
+  max-width: calc(510 / 595 * 100%);
   &:not(:last-child) {
     margin-bottom: rem(40);
   }

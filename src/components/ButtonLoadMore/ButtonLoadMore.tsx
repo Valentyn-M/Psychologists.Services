@@ -2,6 +2,7 @@ import Button from '@/components/Button/Button';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchPsychologists } from '@/store/psychologists/operations';
 import { selectItems, selectLoading } from '@/store/psychologists/selectors';
+import s from './ButtonLoadMore.module.scss';
 
 const ButtonLoadMore = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +17,7 @@ const ButtonLoadMore = () => {
   };
 
   return (
-    <Button disabled={loading} onClick={handleClick}>
+    <Button disabled={loading} onClick={handleClick} className={s.btn}>
       {loading ? 'Loading...' : 'Load more'}
     </Button>
   );

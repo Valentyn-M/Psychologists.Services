@@ -4,8 +4,8 @@ export enum FilterOption {
   ShowAll = '0',
   AtoZ = '1',
   ZtoA = '2',
-  LessThan10 = '3',
-  GreaterThan10 = '4',
+  Expensive = '3',
+  NotExpensive = '4',
   Popular = '5',
   NotPopular = '6',
 }

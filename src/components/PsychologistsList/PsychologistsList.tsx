@@ -23,6 +23,7 @@ const PsychologistsList = ({}: PsychologistsListProps) => {
           <PsychologistItem key={item.id} data={item} />
         ))}
       </ul>
+      {/* TODO Add Loader */}
     </div>
   );
 };

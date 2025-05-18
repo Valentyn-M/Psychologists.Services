@@ -27,6 +27,7 @@ const AuthPanel: React.FC<AuthPanelProps> = ({}) => {
         Log In
       </Button>
       <Button onClick={() => openModal('register')}>Registration</Button>
+
       <AnimatedModal
         isOpen={isModalOpen}
         onClose={closeModal}

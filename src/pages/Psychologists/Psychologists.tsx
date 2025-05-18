@@ -14,11 +14,11 @@ const Psychologists: React.FC<PsychologistsProps> = ({}) => {
   }, []);
 
   return (
-    <section>
+    <>
       <Title>Psychologists</Title>
       <Meta name="description" content="Chose your psychologist" />
       <PsychologistsBlock />
-    </section>
+    </>
   );
 };
 

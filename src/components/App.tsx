@@ -38,6 +38,7 @@ const App: React.FC = () => {
             </PrivateRoute>
           }
         />
+        {/* TODO Add Styles to NotFoundPage */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>

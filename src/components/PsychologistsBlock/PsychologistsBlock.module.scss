@@ -1,0 +1,21 @@
+.psychologistsBlock {
+  padding-top: rem(64);
+  padding-bottom: rem(100);
+
+  @media (max-width: rem(980)) {
+    padding-top: rem(60);
+    padding-bottom: rem(60);
+  }
+
+  @media (max-width: rem(768)) {
+    padding-top: rem(50);
+    padding-bottom: rem(50);
+    column-gap: calc(125 / 740 * 100%);
+  }
+
+  @media (max-width: rem(740)) {
+    flex-direction: column-reverse;
+    padding-top: rem(40);
+    padding-bottom: rem(40);
+  }
+}

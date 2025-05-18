@@ -1,0 +1,11 @@
+.psychologistsList {
+  &:not(:last-child) {
+    margin-bottom: rem(64);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: rem(32);
+}

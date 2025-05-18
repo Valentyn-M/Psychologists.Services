@@ -8,9 +8,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   children: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ disabled, outline, children, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({ disabled, outline, children, className, ...rest }) => {
   return (
-    <button type="button" {...rest} className={clsx(s.button, disabled && s.disabled, outline && s.outline)}>
+    <button type="button" {...rest} className={clsx(s.button, disabled && s.disabled, outline && s.outline, className)}>
       {children}
     </button>
   );
