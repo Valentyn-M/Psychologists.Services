@@ -1,5 +1,7 @@
 import { svgIcon } from '@/components/App';
 import s from './HeroImgBlock.module.scss';
+import heroImage from '@/images/hero-image.jpg';
+import heroImage2x from '@/images/hero-image_2x.jpg';
 
 export interface HeroImgBlockProps {}
 
@@ -19,8 +21,8 @@ const HeroImgBlock = ({}: HeroImgBlockProps) => {
       </div>
       <div>
         <picture>
-          <source srcSet="/src/images/hero-image_2x.jpg" media="(min-resolution: 192dpi)" />
-          <img src="/src/images/hero-image.jpg" alt="Psychologist" />
+          <source srcSet={heroImage2x} media="(min-resolution: 192dpi)" />
+          <img src={heroImage} alt="Psychologist" width="464" height="526" />
         </picture>
         <div className={s.iconQuestionWrap}>
           <svg className={s.iconQuestion}>
