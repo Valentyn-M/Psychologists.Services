@@ -47,6 +47,7 @@ body {
       background-color: var(--brand-color);
       border-radius: 50%;
       filter: blur(1000px);
+      pointer-events: none;
     }
   }
 

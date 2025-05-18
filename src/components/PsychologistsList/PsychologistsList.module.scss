@@ -2,10 +2,37 @@
   &:not(:last-child) {
     margin-bottom: rem(64);
   }
+
+  @media (max-width: rem(980)) {
+    &:not(:last-child) {
+      margin-bottom: rem(60);
+    }
+  }
+
+  @media (max-width: rem(768)) {
+    &:not(:last-child) {
+      margin-bottom: rem(50);
+    }
+  }
+
+  @media (max-width: rem(740)) {
+    &:not(:last-child) {
+      margin-bottom: rem(40);
+    }
+  }
 }
 
 .list {
   display: flex;
   flex-direction: column;
   gap: rem(32);
+}
+
+.loader {
+  margin-top: rem(32);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

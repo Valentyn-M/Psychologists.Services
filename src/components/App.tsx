@@ -6,6 +6,7 @@ import Layout from '@/components/Layout/Layout';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { refreshUser } from '@/store/auth/operations';
 import { selectIsRefreshing } from '@/store/auth/selectors';
+import Loader from '@/components/Loader/Loader';
 
 export const svgIcon = '/sprite.svg';
 
@@ -23,8 +24,7 @@ const App: React.FC = () => {
   const isRefreshing = useAppSelector(selectIsRefreshing);
 
   return isRefreshing ? (
-    // TODO <Loader />
-    <p>Loading...</p>
+    <Loader className="main-loader" />
   ) : (
     <Layout>
       <Routes>
@@ -38,7 +38,6 @@ const App: React.FC = () => {
             </PrivateRoute>
           }
         />
-        {/* TODO Add Styles to NotFoundPage */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>

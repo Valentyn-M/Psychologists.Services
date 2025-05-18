@@ -1,12 +1,14 @@
 import { useAppSelector } from '@/store/hooks';
 import s from './FavoritesList.module.scss';
-import { selectSortedFavorites } from '@/store/favorites/selectors';
+import { selectFavoritesLoading, selectSortedFavorites } from '@/store/favorites/selectors';
 import PsychologistItem from '@/components/PsychologistItem/PsychologistItem';
+import Loader from '@/components/Loader/Loader';
 
 export interface FavoritesListProps {}
 
 const FavoritesList = ({}: FavoritesListProps) => {
   const entities = useAppSelector(selectSortedFavorites);
+  const loading = useAppSelector(selectFavoritesLoading);
 
   return (
     <div className={s.favoritesList}>
@@ -15,7 +17,7 @@ const FavoritesList = ({}: FavoritesListProps) => {
           <PsychologistItem key={psych.id} data={psych} />
         ))}
       </ul>
-      {/* TODO Add Loader */}
+      {loading && <Loader className={s.loader} />}
     </div>
   );
 };

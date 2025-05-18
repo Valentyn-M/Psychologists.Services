@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import s from './PsychologistsList.module.scss';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchPsychologists } from '@/store/psychologists/operations';
-import { selectSortedPsychologists } from '@/store/psychologists/selectors';
+import { selectLoading, selectSortedPsychologists } from '@/store/psychologists/selectors';
 import PsychologistItem from '@/components/PsychologistItem/PsychologistItem';
+import Loader from '@/components/Loader/Loader';
 
 export interface PsychologistsListProps {}
 
@@ -11,6 +12,7 @@ const PsychologistsList = ({}: PsychologistsListProps) => {
   const dispatch = useAppDispatch();
 
   const psychologists = useAppSelector(selectSortedPsychologists);
+  const loading = useAppSelector(selectLoading);
 
   useEffect(() => {
     dispatch(fetchPsychologists());
@@ -23,7 +25,7 @@ const PsychologistsList = ({}: PsychologistsListProps) => {
           <PsychologistItem key={item.id} data={item} />
         ))}
       </ul>
-      {/* TODO Add Loader */}
+      {loading && <Loader className={s.loader} />}
     </div>
   );
 };

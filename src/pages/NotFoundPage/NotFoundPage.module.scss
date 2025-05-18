@@ -1,0 +1,43 @@
+.notFoundPage {
+  text-align: center;
+  padding-top: rem(100);
+  padding-bottom: rem(100);
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+}
+
+.title {
+  text-align: center;
+  color: var(--error-color);
+  font-size: rem(36);
+  font-weight: 700;
+  line-height: 1.5;
+  &:not(:last-child) {
+    margin-bottom: rem(32);
+  }
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  padding: rem(18) rem(50);
+  background: var(--brand-color);
+  font-weight: 500;
+  font-size: rem(20);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--main-light);
+  transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background: var(--brand-color-hover);
+    }
+  }
+  &:focus {
+    background: var(--brand-color-hover);
+  }
+}
