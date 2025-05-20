@@ -12,6 +12,12 @@
   }
 }
 
+.img {
+  @media (max-width: rem(740)) {
+    width: 100%;
+  }
+}
+
 .priceBlock {
   border-radius: 20px;
   padding: rem(32);

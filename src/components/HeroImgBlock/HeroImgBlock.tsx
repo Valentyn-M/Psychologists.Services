@@ -22,7 +22,7 @@ const HeroImgBlock = ({}: HeroImgBlockProps) => {
       <div>
         <picture>
           <source srcSet={heroImage2x} media="(min-resolution: 192dpi)" />
-          <img src={heroImage} alt="Psychologist" width="464" height="526" />
+          <img className={s.img} src={heroImage} alt="Psychologist" width="464" height="526" />
         </picture>
         <div className={s.iconQuestionWrap}>
           <svg className={s.iconQuestion}>
