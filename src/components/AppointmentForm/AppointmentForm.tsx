@@ -64,7 +64,7 @@ const AppointmentForm = ({ onClose, psychologist }: AppointmentFormProps) => {
 
   return (
     <div>
-      <h2 className={s.title}>Make an appointment with a psychologists</h2>
+      <h2 className={s.title}>Make an appointment with a psychologist</h2>
       <p className={s.text}>
         You are on the verge of changing your life for the better. Fill out the short form below to book your personal
         appointment with a professional psychologist. We guarantee confidentiality and respect for your privacy.
