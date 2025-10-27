@@ -6,7 +6,7 @@ import Layout from '@/components/Layout/Layout';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { refreshUser } from '@/store/auth/operations';
 import { selectIsRefreshing } from '@/store/auth/selectors';
-import Loader from '@/components/Loader/Loader';
+import Loader from '@/components/Button/Loader/Loader';
 
 export const svgIcon = '/sprite.svg';
 

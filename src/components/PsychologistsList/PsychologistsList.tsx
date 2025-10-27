@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchPsychologists } from '@/store/psychologists/operations';
 import { selectLoading, selectSortedPsychologists } from '@/store/psychologists/selectors';
 import PsychologistItem from '@/components/PsychologistItem/PsychologistItem';
-import Loader from '@/components/Loader/Loader';
+import Loader from '@/components/Button/Loader/Loader';
 
 export interface PsychologistsListProps {}
 

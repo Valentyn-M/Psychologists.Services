@@ -32,7 +32,10 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onClose }) => {
   };
 
   const registerSchema = Yup.object().shape({
-    name: Yup.string().min(3, 'Too Short!').max(20, 'Too Long!').required('Required'),
+    name: Yup.string()
+      .min(3, 'Name must be at least 3 characters')
+      .max(20, 'Name must be no more than 20 characters')
+      .required('Required'),
     email: Yup.string().email('Invalid email address').required('Required'),
     password: Yup.string()
       .min(8, 'Password must be at least 8 characters long')
@@ -67,8 +70,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onClose }) => {
     <div>
       <h2 className={s.title}>Registration</h2>
       <p className={s.text}>
-        Thank you for your interest in our platform! In order to register, we need some information. Please provide us
-        with the following information.
+        Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the
+        following information.
       </p>
       <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={registerSchema}>
         {({ errors, touched }) => (
